@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<style>
+  body, html {
+    height: 100%;
+  }
+</style>
+
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'website/css/spinner.css' %}">
+
+<div class="container center" style="height:calc(100% - 40px);" ng-controller="TweetCtrl">
+  <div class="col-md-8 col-xs-12" style="font-family:brandon;margin-top:20px;">
+    <div class="col-md-12 col-xs-12 no-padding">
+      <div class="col-md-12 col-xs-12 no-padding center">
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+        <div class="bloop"></div>
+      </div>
+      <div class="col-md-12 col-xs-12 spinner-msg">
+        Getting
+      </div>
+      <div class="col-md-12 col-xs-12 movie-msg">
+        {$ movie_name $}
+      </div>
+      <div class="col-md-6 col-xs-8 col-md-offset-3 col-xs-offset-2 tweet-msg" style="padding:20px;">
+        {$ count $} <div>TWEETS</div>
+        <div ng-if="no_tweets==1" style="font-size:13px;letter-spacing:2px;color:#f43f4e;margin-top:5px;">
+          NO MORE TWEETS LEFT
+        </div>
+      </div>
+      <div class="col-md-6 col-xs-8 col-md-offset-3 col-xs-offset-2 btn-tweet-stop" ng-class="{'btn-tweet-sent': which_btn==1}" style="padding:15px;">
+        <div ng-click="stop_btn()" ng-if="which_btn == 0">stop getting</div>
+        <a href="/result?moviename={$ movie_name $}&amp;id={$ movie_id $}" target="_parent" ng-if="which_btn == 1" class="col-md-12 col-xs-12 no-padding">
+          <span style="color:#fff;">Sentiment</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

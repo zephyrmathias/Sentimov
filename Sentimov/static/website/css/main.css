@@ -1,0 +1,237 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+@font-face {
+    font-family: oldsansblack;
+    src: url(../fonts/oldsansblack.ttf);
+}
+
+@font-face {
+    font-family: roboto;
+    src: url(../fonts/roboto-light.ttf);
+}
+
+@font-face {
+    font-family: brandon;
+    src: url(../fonts/brandon.otf);
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.center {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar {
+  border-radius: 0px;
+  background: #fff;
+  opacity: 0.6;
+}
+
+.search-btn {
+  border-radius:0px;
+  height:100%;
+  width:100%;
+  background: #51c4f4;
+  color: #fff;
+}
+
+.transition {
+  transition-property: all;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+}
+
+.result-poster-shadow {
+  -webkit-box-shadow: 0px 4px 20px -4px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 4px 20px -4px rgba(0,0,0,1);
+  box-shadow: 0px 4px 20px -4px rgba(0,0,0,1);
+}
+
+.poster-search-name {
+  font-family:brandon;
+  font-weight:800;
+  font-size: 22px;
+  margin-top: 15px;
+}
+
+.poster-search-detail {
+  height: calc(100% - 80px);
+}
+
+.poster-search-overview {
+  margin-top: 15px;
+  font-weight: 400;
+  font-family: brandon;
+  font-size: 18px;
+}
+
+.btn-get-tweet {
+  position:absolute;
+  bottom:0px;
+}
+
+.btn-get {
+  color: #fff;
+  font-family: brandon;
+  font-weight: 600;
+  height: 35px;
+  transition-property: all;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  border-radius: 3px;
+  background:#222;
+  -webkit-box-shadow: -7px 15px 37px -15px rgba(0,0,0,0.75);
+  -moz-box-shadow: -7px 15px 37px -15px rgba(0,0,0,0.75);
+  box-shadow: -7px 15px 37px -15px rgba(0,0,0,0.75);
+}
+
+.download {
+  height:40px;
+  line-height:40px;
+  border:1px solid #ccc;
+  transition-property: all;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.download:hover {
+  background: #888;
+}
+
+
+/* ----------- iPad ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+/* Portrait */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Portrait */
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+  .poster-search-name {
+    font-size: 16px;
+    text-align: center;
+  }
+  .poster-search-detail {
+    height: 120px;
+  }
+  .poster-search-overview {
+    display: none;
+  }
+}
+
+/* Landscape */
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+}
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .poster-search-name {
+      font-size: 18px;
+      text-align: center;
+    }
+    .poster-search-detail {
+      height: 130px;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+}
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) {
+    .poster-search-name {
+      font-size: 20px;
+      text-align: center;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) {
+
+}
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}

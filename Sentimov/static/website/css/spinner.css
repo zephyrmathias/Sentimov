@@ -1,0 +1,255 @@
+#getting {
+  font-size: 22px;
+  font-weight: 800;
+  /*border-bottom: 3px solid #666;
+  padding-right: 35px;
+  padding-bottom: 5px;*/
+}
+
+#movie-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: #555;
+}
+
+.pusher {
+  background: rgba(0, 0, 0, 0.1);
+  height: 5px;
+  margin-top: 10px;
+  overflow: hidden;
+  position: relative;
+  width:100%;
+}
+.pusher::before, .pusher::after {
+  background: rgba(0, 0, 0, 0.2);
+  content: '';
+  display: block;
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translate3d(-100%, 0, 0);
+  width: 50%;
+}
+.pusher::before {
+  animation: pusher 4s infinite;
+}
+.pusher::after {
+  animation: pusher 4s infinite;
+}
+
+@keyframes pusher {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(200%, 0, 0);
+  }
+}
+.spinner-msg {
+  text-transform: uppercase;
+  letter-spacing: 15px;
+  text-align: center;
+  font-family: brandon;
+  font-weight: 800;
+  font-size: 20px;
+  padding-left:30px;
+  margin-top:10px;
+}
+
+.movie-msg {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: brandon;
+  font-weight: 800;
+  font-size: 17px;
+  color: #555;
+  margin-top: 8px;
+}
+
+.tweet-msg {
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: brandon;
+  font-weight: 800;
+  font-size: 20px;
+  color: #1da1f2;
+  margin-top: 20px;
+  border: 2px solid #1da1f2;
+}
+
+.tweet-msg div {
+  font-size: 17px;
+  color: #888;
+}
+
+.btn-tweet-stop {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: brandon;
+  font-weight: 800;
+  font-size: 16px;
+  color: #fff;
+  margin-top: 20px;
+  cursor: pointer;
+  background: #000;
+}
+
+.btn-tweet-sent {
+  background: #1da1f2;
+}
+
+.bloop {
+  width: 6px;
+  height: 15px;
+  background-color: #1da1f2;
+  float: left;
+  margin-left: 10px;
+}
+
+.bloop:after {
+  width: 6px;
+  height: 15px;
+  background-color: #1da1f2;
+  float: left;
+  margin-left: 10px;
+  content: "";
+  opacity: 0.6;
+  margin-left: 0;
+  -webkit-animation: 0.3s linear infinite RISE;
+  -moz-animation: 0.3s linear infinite RISE;
+  animation: 0.3s linear infinite RISE;
+}
+
+.bloop:nth-child(3) {
+  margin-left: 30px;
+}
+
+.bloop:nth-child(6),
+.bloop:nth-child(7),
+.bloop:nth-child(9),
+.bloop:nth-child(11) {
+  margin-left: 5px;
+}
+
+.bloop:nth-child(2),
+.bloop:nth-child(8),
+.bloop:nth-child(10) {
+  margin-left: 15px;
+}
+
+.bloop:nth-child(6),
+.bloop:nth-child(9),
+.bloop:nth-child(10) {
+  position: relative;
+  bottom: 15px;
+}
+
+.bloop:nth-child(1):after {
+  -webkit-animation-delay: 0s;
+  -moz-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.bloop:nth-child(2):after {
+  -webkit-animation-delay: 0.15s;
+  -moz-animation-delay: 0.15s;
+  animation-delay: 0.15s;
+}
+
+.bloop:nth-child(3):after {
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.bloop:nth-child(4):after {
+  -webkit-animation-delay: 0.45s;
+  -moz-animation-delay: 0.45s;
+  animation-delay: 0.45s;
+}
+
+.bloop:nth-child(5):after {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.bloop:nth-child(6):after {
+  -webkit-animation-delay: 0.75s;
+  -moz-animation-delay: 0.75s;
+  animation-delay: 0.75s;
+}
+
+.bloop:nth-child(7):after {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.bloop:nth-child(8):after {
+  -webkit-animation-delay: 1.05s;
+  -moz-animation-delay: 1.05s;
+  animation-delay: 1.05s;
+}
+
+.bloop:nth-child(9):after {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.bloop:nth-child(10):after {
+  -webkit-animation-delay: 1.35s;
+  -moz-animation-delay: 1.35s;
+  animation-delay: 1.35s;
+}
+
+.bloop:nth-child(11):after {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+.bloop:nth-child(12):after {
+  -webkit-animation-delay: 1.65s;
+  -moz-animation-delay: 1.65s;
+  animation-delay: 1.65s;
+}
+
+.bloop:nth-child(13):after {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+@-webkit-keyframes RISE {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-400%);
+  }
+}
+@-moz-keyframes RISE {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-400%);
+  }
+}
+@keyframes RISE {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-400%);
+  }
+}

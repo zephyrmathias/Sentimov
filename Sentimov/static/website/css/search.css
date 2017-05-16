@@ -1,0 +1,291 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+.height100 {
+  height:100%;
+}
+
+.bg-search {
+  height: 100%;
+  background-position:center;
+  background-size:cover;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.search-layout {
+  height: 650px;
+  overflow: hidden;
+}
+
+.search-poster {
+  height: 650px;
+}
+
+.search-detail {
+  height: 650px;
+  color:#fff;
+}
+
+.search-name {
+  height: 580px;
+  margin-top:10px;
+  margin-bottom:10px;
+  font-family: brandon;
+  font-size: 24px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top:40px;
+}
+
+.search-button {
+  height: 50px;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+.get-btn {
+  border: 2px solid #1da1f2;
+  font-family: brandon;
+  font-weight: 800;
+  letter-spacing: 4px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  transition-property: all;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-duration: 0.8s;
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+}
+
+.get-btn:hover {
+  background: #1da1f2;
+}
+
+
+.search-overview {
+  font-size: 16px;
+}
+
+/* ----------- iPad ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* Portrait */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .search-layout {
+    height: 900px;
+  }
+
+  .search-poster {
+    height: 750px;
+  }
+  .search-detail {
+    height: 150px;
+  }
+  .search-name {
+    height: 90px;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    margin: 0px;
+  }
+  .search-button {
+    height: 60px;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+  .get-btn {
+    font-size: 18px;
+    height: 50px;
+  }
+  .search-overview {
+    display: none;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .search-poster {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Portrait */
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .search-layout {
+      height: 480px;
+    }
+    .search-poster {
+      height: 395px;
+    }
+    .search-detail {
+      height: 85px;
+    }
+    .search-name {
+      height: 45px;
+      font-size: 15px;
+      text-align: center;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      margin: 0px;
+    }
+    .search-button {
+      height: 40px;
+      justify-content: center;
+    }
+    .get-btn {
+      font-size: 15px;
+      height: 30px;
+    }
+    .search-overview {
+      display: none;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .height100 {
+      height: auto;
+    }
+}
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .search-layout {
+      height: 560px;
+    }
+    .search-poster {
+      height: 460px;
+    }
+    .search-detail {
+      height: 100px;
+    }
+    .search-name {
+      padding-top: 10px;
+      height: 60px;
+      font-size: 16px;
+    }
+    .search-button {
+      height: 40px;
+    }
+    .get-btn {
+      height: 35px;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .height100 {
+      height: auto;
+    }
+}
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) {
+    .search-layout {
+      height: 620px;
+    }
+    .search-poster {
+      height: 520px;
+    }
+    .search-detail {
+      height: 100px;
+    }
+    .search-name {
+      padding-top: 10px;
+      height: 60px;
+      font-size: 16px;
+    }
+    .search-button {
+      height: 35px;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) {
+    .height100 {
+      height: auto;
+    }
+}
+
+#style-4::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 2px solid #555555;
+}

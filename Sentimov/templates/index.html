@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% load staticfiles %}
+
+<style>
+  .div-hide{
+    display: none;
+}
+</style>
+
+<link rel="stylesheet" href="{% static 'website/css/homepage.css' %}">
+<link rel="stylesheet" href="{% static 'website/css/ink.css' %}">
+<script src="{% static 'website/js/ink.js' %}"></script>
+
+<div class="col-md-12 col-xs-12 no-padding center loading-homepage">
+  <div class="spinner">
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="bloop"></div>
+    <div class="spinner-msg">Loading</div>
+  </div>
+</div>
+
+<div class="col-md-12 col-xs-12 no-padding home-content" ng-controller="HomeCtrl">
+
+</div>
+
+
+<div class="cd-transition-layer">
+	<div class="bg-layer"></div>
+</div> <!-- .cd-transition-layer -->
+
+{% endblock %}

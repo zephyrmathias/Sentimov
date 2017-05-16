@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<style>
+  html, body {
+    height: 100%;
+  }
+</style>
+
+{% load staticfiles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'website/css/search.css' %}">
+
+<div class="container-fluid no-padding swiper-container height100" ng-controller="SearchCtrl">
+  <div class="col-md-12 no-padding swiper-wrapper" style="height:100%;">
+    <div class="col-md-12 center no-padding swiper-slide" style="height:85%;" ng-repeat="movie in search_results.results" repeat-end="onEnd()">
+      <div class="col-md-9 col-xs-10 no-padding search-layout" style="background:#111;">
+        <div class="col-md-6 col-xs-12 no-padding search-poster center" style="overflow:hidden;">
+          <img ng-src="https://image.tmdb.org/t/p/w1000/{$ movie.poster_path $}" alt="" error-Img class="img-responsive">
+        </div>
+        <div class="col-md-6 col-xs-12 search-detail">
+          <div class="col-md-12 col-xs-12 no-padding search-name" style="overflow:auto;" id="style-4">
+            <div class="search-overview" style="color:#bbb;font-size:17px;">{$ movie.release_date | date:'yyyy' $}</div>
+            <div style="font-weight:800">
+              <span>{$ movie.title | uppercase $}</span>
+              <span>{$ movie.name | uppercase $}</span>
+            </div>
+            <div class="search-overview">
+              <hr>
+              <div style="font-weight:400;font-size:18px;">OVERALL</div>
+              <div style="color:#bbb;font-size:17px;">{$ movie.overview $}</div>
+              <div class="col-md-12 no-padding" style="height:200px;margin-top:15px;">
+                <img ng-src="https://image.tmdb.org/t/p/w500/{$ movie.backdrop_path $}" alt="" class="img-responsive">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-xs-12 no-padding center search-button">
+            <div class="col-md-4 col-xs-6 center get-btn" ng-click="get_twt(movie.title,movie.id)">
+              GET
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination" style=""></div>
+</div>
+
+{% endblock %}

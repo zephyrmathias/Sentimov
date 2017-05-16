@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<style>
+  body, html {
+      height: 100%;
+  }
+</style>
+
+{% load staticfiles %}
+<!--<link rel="stylesheet" href="{% static 'website/css/result.css' %}">-->
+<link rel="stylesheet" href="{% static 'website/css/result2.css' %}">
+<script src="{% static 'website/js/result.js' %}"></script>
+
+<div class="container-fluid no-padding result-content" ng-controller="ResultCtrl" style="margin-top:60px;background:#000;">
+
+  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+
+    <div class="col-md-12 col-xs-12 no-padding result-menu text-center">
+      <a href="#sentiment" id="sentiment-tab" role="tab" data-toggle="tab" aria-controls="sentiment" aria-expanded="true">
+        <div class="col-md-4 col-xs-4 no-padding center res transition" style="height:60px;" ng-click="toggle(1)">
+          <div class="col-md-5 col-xs-10 no-padding center" ng-class="{'result-menu-active':menu_toggle==1}" style="height:30px;">
+            SENTIMENT
+          </div>
+        </div>
+      </a>
+      <a href="#overview" id="overview-tab" role="tab" data-toggle="tab" aria-controls="overview" aria-expanded="false">
+        <div class="col-md-4 col-xs-4 no-padding center res transition" style="height:60px;" ng-click="toggle(2)">
+          <div class="col-md-4 col-xs-10 no-padding center" ng-class="{'result-menu-active':menu_toggle==2}" style="height:30px;">
+            OVERVIEW
+          </div>
+        </div>
+      </a>
+      <a href="#cast" id="cast-tab" role="tab" data-toggle="tab" aria-controls="cast" aria-expanded="false">
+        <div class="col-md-4 col-xs-4 no-padding center res transition" style="height:60px;" ng-click="toggle(3)">
+          <div class="col-md-5 col-xs-10 no-padding center" ng-class="{'result-menu-active':menu_toggle==3}" style="height:30px;">
+            CAST
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="tab-content" id="myTabContent">
+
+      <div class="tab-pane fade" role="tabpanel" id="overview" aria-labelledby="overview-tab">
+        <div class="col-md-12 col-xs-12 no-padding result-content">
+          <div class="col-md-12 col-xs-12 no-padding backdrop-poster" style="position:absolute;background:url(https://image.tmdb.org/t/p/original/{$ movie_detail.backdrop_path $});background-position:center;background-size:cover"></div>
+          <div class="col-md-12 col-xs-12 backdrop center text-center">
+            <div class="col-md-12 col-xs-12 no-padding">
+              <div class="movie-title">{$ movie_detail.title | uppercase $}</div>
+              <div class="movie-detail-1">
+                <span>{$ movie_detail.release_date | date:"yyyy" $}, </span>
+                <span ng-if="runtime_hours > 1">{$ runtime_hours $} hours</span>
+                <span ng-if="runtime_hours == 1">{$ runtime_hours $} hour</span>
+                <span>{$ runtime_mins $} minutes </span>
+              </div>
+              <div class="movie-detail-2">
+                <span ng-repeat="genre in movie_detail.genres" ng-if="!$last">{$ genre.name | lowercase $}, </span>
+                <span ng-repeat="genre in movie_detail.genres" ng-if="$last">{$ genre.name | lowercase $}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xs-12 col-md-offset-3 overview-content">
+            <div class="col-md-12 col-xs-12">
+              <div class="col-md-3 col-xs-5 no-padding" id="overview-topic">
+                OVERVIEW
+              </div>
+              <div class="col-md-12 col-xs-12 no-padding" id="overview-detail">
+                <p style="text-indent:2em">{$ movie_detail.overview $}</p>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12" style="margin-top:15px;">
+              <div class="col-md-3 col-xs-5 no-padding" id="overview-topic">
+                VIDEOS
+              </div>
+              <div class="col-md-12 col-xs-12 no-padding" id="video-detail">
+                <div class="col-md-12 col-xs-12 no-padding" ng-repeat="vid in video.results | limitTo:2" style="height:300px;margin-top:20px;">
+                  <iframe style="height:100%;width:100%;margin-top:10px;" ng-src="{$ getIframeSrc(vid.key) $}" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12" style="margin-top:15px;">
+              <div class="col-md-3 col-xs-5 no-padding" id="overview-topic">
+                RECOMMENDATIONS
+              </div>
+              <div class="col-md-12 col-xs-12 no-padding" id="video-detail">
+                <div class="col-md-12.col-xs-12.no-padding" ng-repeat="mov in recommend.results | limitTo:3" style="margin-top:15px;">
+                  <img ng-src="https://image.tmdb.org/t/p/original/{$ mov.backdrop_path $}" alt="" class="img-responsive">
+                  <div class="col-md-12 col-xs-12 rectitle">
+                    {$ mov.title $}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade active in" role="tabpanel" id="sentiment" aria-labelledby="sentiment-tab">
+        <div class="col-md-12 col-xs-12 no-padding result-content">
+          <div class="col-md-12 col-xs-12 no-padding backdrop-poster" style="position:absolute;background:url(https://image.tmdb.org/t/p/original/{$ movie_detail.backdrop_path $});background-position:center;background-size:cover"></div>
+          <div class="col-md-12 col-xs-12 backdrop center text-center">
+            <div class="col-md-12 col-xs-12 no-padding">
+              <div class="movie-title">{$ movie_detail.title | uppercase $}</div>
+              <div class="movie-detail-1">
+                <span>{$ movie_detail.release_date | date:"yyyy" $}, </span>
+                <span ng-if="runtime_hours > 1">{$ runtime_hours $} hours</span>
+                <span ng-if="runtime_hours == 1">{$ runtime_hours $} hour</span>
+                <span>{$ runtime_mins $} minutes </span>
+              </div>
+              <div class="movie-detail-2">
+                <span ng-repeat="genre in movie_detail.genres" ng-if="!$last">{$ genre.name | lowercase $}, </span>
+                <span ng-repeat="genre in movie_detail.genres" ng-if="$last">{$ genre.name | lowercase $}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xs-12 col-md-offset-3 overview-content" ng-show="!sentiment_done">
+            <div class="col-md-12 col-xs-12 no-padding center">
+              <div class="loading"></div>
+            </div>
+            <div class="col-md-12 col-xs-12 no-padding text-center" style="margin-top:15px;">PROCESSING...</div>
+          </div>
+
+          <div class="col-md-6 col-xs-12 col-md-offset-3 overview-content" ng-show="sentiment_done" style="font-weight:700">
+            <div class="col-md-12 col-xs-12">
+              <div class="col-md-9 col-xs-12 no-padding" id="overview-topic">
+                SENTIMENT ANALYSIS
+              </div>
+              <div class="col-md-12 col-xs-12 no-padding" id="overview-detail"></div>
+              <div class="col-md-12 col-xs-12 no-padding" style="margin-top:15px;color:#fff">
+                <div class="text-center" style="margin-bottom:15px;font-size:16px;font-weight:700;">TOTAL : {$ total_tweets $} TWEETS</div>
+
+                <div class="col-md-11 col-xs-10 no-padding each-content">
+                  <div>POSITIVE <span style="float:right">{$ sentiment_result['pos'].length $} TWEETS</span></div>
+                  <div class="col-md-12 col-xs-12 no-padding sentiment-gray-bar">
+                    <div class="sentiment-color-bar" style="background:#95c940;width:{$ pos_width $}"></div>
+                  </div>
+                </div>
+                <div class="col-md-1 col-xs-2 no-padding each-content">
+                  <div class="col-md-12 col-xs-12 no-padding each-content" style="display:flex;justify-content:flex-end;align-items:center">
+                    <a role="button" data-toggle="collapse" href="#positivecollapse" aria-expanded="false" aria-controls="positivecollapse">
+                      <div class='wrapper'>
+                        <ul class='hamburger'>
+                          <li class='first'></li>
+                          <li class='second'></li>
+                          <li class='third'></li>
+                        </ul>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 no-padding collapse" id="positivecollapse" style="margin-bottom:20px;">
+                  <a href="http://www.twitter.com/{$ pos[2] $}/status/{$ pos[3] $}" target="_blank" class="col-md-12 col-xs-12 preview-tweet" style="border:1px solid #95c940" ng-repeat="pos in pos_tweets | limitTo:20 track by $index ">
+                    <div class="col-md-1 col-xs-2 no-padding">
+                      <img src="{$ pos[4] $}" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-md-11 col-xs-10">
+                      <div class="col-md-12 col-xs-12 no-padding" style="font-size:12px;font-weight:300;color:#ddd" ng-if="pos[5] == 'retweeted'">{$ pos[6] $} retweeted</div>
+                      <div class="col-md-12 col-xs-12 no-padding owner-tweet">{$ pos[2] $}</div>
+                      <div class="col-md-12 col-xs-12 no-padding">{$ pos[0] $}</div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="col-md-11 col-xs-10 no-padding each-content">
+                  <div>NEGATIVE <span style="float:right">{$ sentiment_result['neg'].length $} TWEETS</span></div>
+                  <div class="col-md-12 col-xs-12 no-padding sentiment-gray-bar">
+                    <div class="sentiment-color-bar" style="background:#f74893;width:{$ neg_width $}"></div>
+                  </div>
+                </div>
+                <div class="col-md-1 col-xs-2 no-padding each-content">
+                  <div class="col-md-12 col-xs-12 no-padding each-content" style="display:flex;justify-content:flex-end;align-items:center">
+                    <a role="button" data-toggle="collapse" href="#negativecollapse" aria-expanded="false" aria-controls="negativecollapse">
+                      <div class='wrapper'>
+                        <ul class='hamburger'>
+                          <li class='first'></li>
+                          <li class='second'></li>
+                          <li class='third'></li>
+                        </ul>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 no-padding collapse" id="negativecollapse" style="margin-bottom:20px;">
+                  <a href="http://www.twitter.com/{$ neg[2] $}/status/{$ neg[3] $}" target="_blank" class="col-md-12 col-xs-12 preview-tweet" style="border:1px solid #f74893" ng-repeat="neg in neg_tweets | limitTo:20 track by $index ">
+                    <div class="col-md-1 col-xs-2 no-padding">
+                      <img src="{$ neg[4] $}" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-md-11 col-xs-10">
+                      <div class="col-md-12 col-xs-12 no-padding" style="font-size:12px;font-weight:300;color:#ddd" ng-if="neg[5] == 'retweeted'">{$ neg[6] $} retweeted</div>
+                      <div class="col-md-12 col-xs-12 no-padding owner-tweet">{$ neg[2] $}</div>
+                      <div class="col-md-12 col-xs-12 no-padding">{$ neg[0] $}</div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="col-md-11 col-xs-10 no-padding each-content">
+                  <div>NEUTRAL <span style="float:right">{$ sentiment_result['neu'].length $} TWEETS</span></div>
+                  <div class="col-md-12 col-xs-12 no-padding sentiment-gray-bar">
+                    <div class="sentiment-color-bar" style="background:#55cae9;width:{$ neu_width $}"></div>
+                  </div>
+                </div>
+                <div class="col-md-1 col-xs-2 no-padding each-content">
+                  <div class="col-md-12 col-xs-12 no-padding each-content" style="display:flex;justify-content:flex-end;align-items:center">
+                    <a role="button" data-toggle="collapse" href="#neutralcollapse" aria-expanded="false" aria-controls="neutralcollapse">
+                      <div class='wrapper'>
+                        <ul class='hamburger'>
+                          <li class='first'></li>
+                          <li class='second'></li>
+                          <li class='third'></li>
+                        </ul>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 no-padding collapse" id="neutralcollapse" style="margin-bottom:20px;">
+                  <a href="http://www.twitter.com/{$ neu[2] $}/status/{$ neu[3] $}" target="_blank" class="col-md-12 col-xs-12 preview-tweet" style="border:1px solid #55cae9" ng-repeat="neu in neu_tweets | limitTo:20 track by $index ">
+                    <div class="col-md-1 col-xs-2 no-padding">
+                      <img src="{$ neu[4] $}" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-md-11 col-xs-10">
+                      <div class="col-md-12 col-xs-12 no-padding" style="font-size:12px;font-weight:300;color:#ddd" ng-if="neu[5] == 'retweeted'">{$ neu[6] $} retweeted</div>
+                      <div class="col-md-12 col-xs-12 no-padding owner-tweet">{$ neu[2] $}</div>
+                      <div class="col-md-12 col-xs-12 no-padding">{$ neu[0] $}</div>
+                    </div>
+                  </a>
+                </div>
+                
+                <div class="col-xs-8 col-md-4 col-md-offset-4 col-xs-offset-2 no-padding text-center download" ng-click="download()">
+                  DOWNLOAD RESULTS
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade" role="tabpanel" id="cast" aria-labelledby="cast-tab">
+        <div class="col-md-12 col-xs-12 no-padding cast-content">
+          <div class="cast-overflow">
+            <div class="each-cast" style=";background:url(https://image.tmdb.org/t/p/original{$ cast.profile_path $});background-position:center;background-size:cover" ng-repeat="cast in movie_cast.cast | limitTo:7">
+              <div class="col-md-12 col-xs-12 no-padding cast-backdrop transition"></div>
+              <div class="center cast-name">
+                <div class="col-md-12 col-xs-12 text-center no-padding">
+                  <div class="col-md-12 col-xs-12 no-padding" style="font-size:16px;color:#ddd">{$ cast.character $}</div>
+                  <div class="col-md-12 col-xs-12 no-padding">{$ cast.name $}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
