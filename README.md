@@ -5,10 +5,7 @@
 It's written in Python (Django) and AngularJS. This website will classify tweets into three categories: positive, negative and neutral.
 
 ## How to run the website?
-- Go to the website
-```sh
-https://ide.c9.io/zephyrmathias/senior
-```
+- Go to the website https://ide.c9.io/zephyrmathias/senior
 - then type on the command line at the bottom of the screen
 ```sh
 python manage.py runserver $IP:$PORT
